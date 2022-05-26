@@ -94,7 +94,7 @@ if (params.skip_mirdeep){
     fasta = Channel.empty()
 } else {
     if (params.references_parsed){
-        fasta = file("$params.references_parsed/genome.edited.fa", checkIfExists: true).ifEmpty { file("$params.references_parsed/genome.fa", checkIfExists: true) }
+        fasta = file("$params.references_parsed/genome.edited.fa", checkIfExists: true)
         hairpin = file("$params.references_parsed/hairpin.fa", checkIfExists: true)
         mature = file("$params.references_parsed/mature.fa", checkIfExists: true)
         indices_mirdeep2 = Channel.fromPath("$params.references_parsed/genome.*.ebwt", checkIfExists: true).ifEmpty { exit 1, "Reference parsed genome indices not found: ${references_parsed}"}
